@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/display-workers.css">
   <title>SIPS & BITES | Landing Page</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!--<link rel="stylesheet" href="../vendor/all.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="../vendor/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
       <h1 class="mb-0" style="margin-left: 300px;">SIPS & BITES</h1>
     </div>
     <div>
-      <img src="../../asset/image/user.png" width="30" height="30" Icon class="ms-3">
+      <img src="../../asset/logo/profile.png" height="50px" width="50px" class="rounded-circle" Icon class="ms-3">
     </div>
   </header>
 
@@ -27,11 +29,21 @@
     <!-- Sidebar dans sa propre div -->
     <div class="sidebar-container">
       <nav class="sidebar" id="sidebar-menu">
-        <a href="#" onclick="showSection('home-section')">Home</a>
-        <a href="#" onclick="showSection('register-worker')">Register Worker</a>
-        <a href="#" onclick="showSection('worker-list')">Worker List</a>
-        <a href="#" onclick="showSection('register-consumption')">Register Consumption</a>
-        <a href="#" onclick="showSection('display-worker-debts')">Display Worker Debts</a>
+        <a href="#" onclick="showSection('home-section')" class="sidebar-link">
+          <i class="fa fa-home"></i> Home
+        </a>
+        <a href="#" onclick="showSection('register-worker')" class="sidebar-link">
+          <i class="fa fa-user-plus"></i> Register Worker
+        </a>
+        <a href="#" onclick="showSection('worker-list')" class="sidebar-link">
+          <i class="fa fa-users"></i> Worker List
+        </a>
+        <a href="#" onclick="showSection('register-consumption')" class="sidebar-link">
+          <i class="fa fa-utensils"></i> Register Consumption
+        </a>
+        <a href="#" onclick="showSection('display-worker-debts')" class="sidebar-link">
+          <i class="fa fa-money-bill-wave"></i> Display Worker Debts
+        </a>
       </nav>
     </div>
 
@@ -39,9 +51,32 @@
     <div class="content-container">
       <main id="page-center" class="col-md-10 p-4">
         <!-- Section Accueil -->
-        <div id="home-section" style="display: block;">
-          <h2>Accueil</h2>
-          <p>Bienvenue sur SIPS & BITES !</p>
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
+          class="container p-2 border rounded bg-light shadow" id="home-section" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;">Home Page</h2>
+          <div class="home-cards">
+            <div class="home-card">
+              <div class="card-body">
+                <i class="fa fa-users fa-2x" style="color:#e4572e;"></i>
+                <div class="card-title">Number of workers</div>
+                <div class="card-value">25</div>
+              </div>
+            </div>
+            <div class="home-card">
+              <div class="card-body">
+                <i class="fa fa-money-bill-wave fa-2x" style="color:#e4572e;"></i>
+                <div class="card-title">Number of Dept</div>
+                <div class="card-value">5</div>
+              </div>
+            </div>
+            <div class="home-card">
+              <div class="card-body">
+                <i class="fa fa-coins fa-2x" style="color:#e4572e;"></i>
+                <div class="card-title">Total Amount</div>
+                <div class="card-value">100,000 XAF</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Section Register Worker -->
@@ -110,11 +145,11 @@
         </div>
 
         <!-- Register consumption -->
-       <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
           class="container p-2 border rounded bg-light shadow" id="register-consumption" style="display: none;">
           <h2 style="text-align: center; color: #E4572E;">Register consumption</h2>
-            <form action="">
-              <div class="row mb-3">
+          <form action="">
+            <div class="row mb-3">
               <div class="col">
                 <label for="consumerName" class="form-label">Name</label>
                 <input type="text" id="consumerName" class="form-control" placeholder="consumer name">
@@ -135,7 +170,7 @@
               </div>
             </div>
             <div class="row mb-3">
-               <div class="col">
+              <div class="col">
                 <label for="consumption-type" class="form-label">Consumption type</label>
                 <select id="consumption-type" class="form-select">
                   <option value="">Select</option>
@@ -164,7 +199,7 @@
               <button type="submit" class="btn w-50"
                 style="background-color: #E4572E; margin-top: 40px; margin-left: 200px;">Submit</button>
             </div>
-            </form>
+          </form>
         </div>
 
         <!-- Workers list -->
@@ -204,20 +239,20 @@
           </table>
         </div>
 
-<!-- Display workers dept -->
+        <!-- Display workers dept -->
 
         <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 115%;"
           class="container p-2 border rounded bg-light shadow" id="display-worker-debts" style="display: none;">
           <h2 style="text-align: center; color: #E4572E;">Display workers depts</h2>
           <table class="table table-bordered worker-table">
-            <thead >
+            <thead>
               <tr id="head">
                 <th style="background-color: #E4572E;">Num</th>
                 <th style="background-color: #E4572E;">Name</th>
                 <th style="background-color: #E4572E;">Departement</th>
                 <th style="background-color: #E4572E;">Consumption</th>
                 <th style="background-color: #E4572E;">Extra</th>
-                <th style="background-color: #E4572E;" >Total amount</th>
+                <th style="background-color: #E4572E;">Total amount</th>
               </tr>
             </thead>
             <tbody>
@@ -235,16 +270,18 @@
         </div>
     </div>
 
-    
+
 
     </main>
   </div>
   </div>
-
+  <span style="margin-left: 94%;font-family: bold;font-size: 20px;">
+      <script>
+        document.write(new Date().toLocaleDateString());
+      </script>
+  </span>
   <!-- Footer -->
-  <footer class="footer">
-    &copy; 2025 SPS & BITS
-  </footer>
+  <footer class="footer"> <span> &copy; 2025 SPS & BITS</span></footer>
 </body>
 
 </html>
