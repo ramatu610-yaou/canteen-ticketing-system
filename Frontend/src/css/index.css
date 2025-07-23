@@ -1,0 +1,44 @@
+body {
+      background: #f9f9f9;
+      
+    }
+    .sidebar {
+      background:linear-gradient(180deg, #4B2E8C,#2D2D8A);
+      height: 100vh;
+      padding: 20px;
+    }
+    .sidebar a {
+      color: #ffffff;
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .header {
+         background:linear-gradient(180deg, #4B2E8C,#2D2D8A);
+      color: #E4572E;
+      font-weight: 700;
+      padding: 10px 20px;  
+    }
+    .footer {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+    
+    }
+.rounded-circle{
+    border-radius: 50%;
+}
+.main{
+  position: static;
+  left: 0;
+  top: 0;
+  margin: 0;
+  transform: none;
+}
+    
