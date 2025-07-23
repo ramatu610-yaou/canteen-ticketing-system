@@ -16,6 +16,7 @@
   <style>
     body {
       background: #f9f9f9;
+      
     }
     .sidebar {
       background:linear-gradient(180deg, #4B2E8C,#2D2D8A);
@@ -38,16 +39,23 @@
          background:linear-gradient(180deg, #4B2E8C,#2D2D8A);
       color: #E4572E;
       font-weight: 700;
-      padding: 10px 20px;
+      padding: 10px 20px;  
     }
     .footer {
       background: #333;
       color: #fff;
       padding: 10px 20px;
-      text-align: center;
+    
     }
 .rounded-circle{
     border-radius: 50%;
+}
+.main{
+  position: static;
+  left: 0;
+  top: 0;
+  margin: 0;
+  transform: none;
 }
     
   </style>
@@ -57,12 +65,11 @@
   <!-- Header -->
   <header class="header d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
-      <img src="IMG-logo.jpg" height="50px" width="50px" class="rounded-circle" alt="Logo" class="me-2">
-      <h4 class="mb-0" style="text-align: center;">SIPS & BITES</h4>
+      <img src="../canteen-ticketing-system/Frontend/asset/logo/IMG-logo.jpg" height="50px" width="50px" class="rounded-circle" alt="Logo" class="me-2">
+      <h1 class="mb-0" style="margin-left: 300px;">SIPS & BITES</h1>
     </div>
     <div>
-      <span>Welcome to SPS & BITS</span>
-      <img src="user.png" width="30" height="30" Icon" class="ms-3">
+      <img src="../canteen-ticketing-system/Frontend/asset/image/user.png" width="30" height="30" Icon class="ms-3">
     </div>
   </header>
 
@@ -94,6 +101,7 @@
 
   <!-- Register Worker Template -->
   <template id="register-worker-template">
+    <div class="container p-4 border rounded bg-light shadow">
     <h2 style="text-align: center; color: #E4572E;" >Register Worker</h2>
     <form>
         <div class="row">
@@ -139,13 +147,15 @@
       </div><br>
       <br>
       <div class="btn-gradient">
-      <p><button type="submit" class="btn btn-primary w-50">Register</button></p>
+      <p><button type="submit" class="btn w-50" style="background-color: #E4572E; margin-top: 50px; margin-left: 200px;">Register</button></p>
       </div>
     </form>
+    </div>
   </template>
 
   <!--Register consumption-->
    <template id="register-consumption-template">
+    <div class="container p-4 border rounded bg-light shadow">
     <h2 style="text-align: center; color: #E4572E;">Register consumption</h2>
     <form>
         <div class="row">
@@ -183,11 +193,11 @@
        <br>
        <br>
        <div class="btn-gradient">
-      <button type="submit" class="btn btn-primary w-50">Submit</button>
+      <button type="submit" class="btn w-50" style="background-color: #E4572E; margin-top: 50px; margin-left: 200px;"  >Submit</button>
       </div>
     
     </form>
-
+     </div>
   </template>
 
 
