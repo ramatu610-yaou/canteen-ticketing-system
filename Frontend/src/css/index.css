@@ -3,12 +3,14 @@ body {
       
     }
     .sidebar {
-      background:linear-gradient(180deg, #4B2E8C,#2D2D8A);
-      height: 100vh;
+      background-color: #edf2fa;
+      height: 84vh;
       padding: 20px;
+      position: relative;
+      left: -12px;
     }
     .sidebar a {
-      color: #ffffff;
+      color: #031046;
       display: block;
       margin-bottom: 10px;
       text-decoration: none;
@@ -41,4 +43,26 @@ body {
   margin: 0;
   transform: none;
 }
+
+#register-worker{
+  position: relative;
+  bottom: -32px;
+}
+
+/* Ajoute dans index.css */
+.container-fluid {
+  display: flex;
+}
+.sidebar-container {
+  width: 240px;
+}
+.content-container {
+  flex: 1;
+}
+
+.head th{
+  background-color: #E4572E;
+}
+
+
     
