@@ -146,33 +146,3 @@ span{
   font-weight: bold;
 }
 
-.user-info-card {
-  background: #fff;
-  border: 2px solid #402e8b;
-  width: 420px;
-  margin: 32px auto 0 auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 24px 32px;
-}
-
-.user-info-body {
-  display: flex;
-  gap: 12px;
-}
-
-.user-info-row {
-  display: flex;
-}
-
-.user-label {
-  color: #031046;
-  font-weight: 600;
-}
-
-.user-value {
-  color: #e4572e;
-  font-weight: 500;
-}
-
-
-    
