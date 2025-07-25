@@ -1,36 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylesheet.css">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/display-workers.css">
+  <title>SIPS & BITES | Landing Page</title>
+  <!--<link rel="stylesheet" href="../vendor/all.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="../vendor/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-
-   
-    <div class="login-form">
-       <form action="">
-        <h2 class="text-center mb-4">Login</h2>
-        <img src="c:\Users\USER\Documents\canteen-ticketing-system\Frontend\src\html\user1.png" alt="c:\Users\USER\Documents\canteen-ticketing-system\Frontend\src\html\user1.png">
-      <div class="mb-3">
-        <label for="username" class="form-lable">username</label>
-        <br>
-        <input type="text" id="username" class="form-control" required>
-        </div>
-        <div class="mb-3">
-        <label for="password" class="form-lable">Password</label>
-        <input type="password" id="password" class="form-control"
-        required>
-        </div>
-        <div>
-       <br> <button type="submit" class="btn btn-primary w-100">Submit</button><br>
-        </div>
-       </form>
+  <!-- Header -->
+  <header class="header d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="../../asset/logo/IMG-logo.jpg" height="50px" width="50px" class="rounded-circle" alt="Logo"
+        class="me-2">
+      <h1 class="mb-0" style="margin-left: 600px;">SIPS & BITES</h1>
     </div>
-     </div>
+    <div>
+      <img src="../../asset/logo/profile.png" height="50px" width="50px" class="rounded-circle" Icon class="ms-3">
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <!-- Sidebar dans sa propre div -->
+    <div class="sidebar-container">
+      <nav class="sidebar" id="sidebar-menu">
+        <a href="#" onclick="showSection('home-section')" class="sidebar-link">
+          <i class="fa fa-home"></i> Home
+        </a>
+        <a href="#" onclick="showSection('register-worker')" class="sidebar-link">
+          <i class="fa fa-user-plus"></i> Register Worker
+        </a>
+        <a href="#" onclick="showSection('worker-list')" class="sidebar-link">
+          <i class="fa fa-users"></i> Worker List
+        </a>
+        <a href="#" onclick="showSection('register-consumption')" class="sidebar-link">
+          <i class="fa fa-utensils"></i> Register Consumption
+        </a>
+        <a  href="#" onclick="showSection('display-worker-debts')" class="sidebar-link"> 
+          <i class="fa fa-money-bill-wave"></i> Display Worker Debts
+        </a>
+        <a href="#" onclick="showSection('consumption-list')" class="sidebar-link">
+          <i class="fa-solid fa-clipboard-list"></i>Consumption list
+
+        </a>
+      </nav>
+    </div>
+
+    <!-- Contenu principal dans sa propre div -->
+    <div class="content-container">
+      <main id="page-center" class="col-md-10 p-4">
+        <!-- Section Accueil -->
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
+          class="container p-2 border rounded bg-light shadow" id="home-section" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;">Home Page</h2>
+          <div class="home-cards">
+            <div class="home-card">
+              <div class="card-body">
+                <i class="fa fa-users fa-2x" style="color:#e4572e;"></i>
+                <div class="card-title">Number of workers</div>
+                <div class="card-value">25</div>
+              </div>
+            </div>
+            <div class="home-card">
+              <div class="card-body">
+                <i class="fa fa-money-bill-wave fa-2x" style="color:#e4572e;"></i>
+                <div class="card-title">Number of Dept</div>
+                <div class="card-value">5</div>
+              </div>
+            </div>
+            <div class="home-card">
+              <div class="card-body">
+                <i class="fa fa-coins fa-2x" style="color:#e4572e;"></i>
+                <div class="card-title">Total Amount</div>
+                <div class="card-value">100,000 XAF</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Register Worker -->
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
+          class="container p-2 border rounded bg-light shadow" id="register-worker" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;">Register Worker</h2>
+          <!-- À placer dans la section Register Worker ou ailleurs -->
+          <form>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Name">
+              </div>
+              <div class="col">
+                <label for="giving-name" class="form-label">Giving Name</label>
+                <input type="text" id="giving-name" class="form-control" placeholder="Giving Name">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="departement" class="form-label">Departement</label>
+                <select id="departement" class="form-select">
+                  <option value="">Select</option>
+                  <option value="PDL">PDL</option>
+                  <option value="Printing">Printing</option>
+                  <option value="TypeSettin">TypeSettin</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="status" class="form-label">Status</label>
+                <select id="status" class="form-select">
+                  <option value="">Select</option>
+                  <option value="Permanent">Permanent</option>
+                  <option value="Temporal">Temporal</option>
+                  <option value="Intern">Intern</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="date" class="form-label">Date Of Birth</label>
+                <input type="date" id="dob" class="form-control" placeholder="Date Of Birth">
+              </div>
+              <div class="col">
+                <label for="Place" class="form-label">Place Of Birth</label>
+                <input type="text" id="pob" class="form-control" placeholder="Place Of Birth">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="date" class="form-label">Registration date</label>
+                <input type="date" id="rgdate" class="form-control" placeholder="Date Of Birth">
+              </div>
+              <div class="col" style="display: none;">
+                <label for="ppp" class="form-label">Place Of Birth</label>
+                <input type="text" id="ooo" class="form-control" placeholder="Place Of Birth">
+              </div>
+            </div>
+            <!-- Add other fields or buttons -->
+            <div class="btn-gradient">
+              <button type="submit" class="btn w-50"
+                style="background-color: #E4572E; margin-top: 40px; margin-left: 200px;">Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Register consumption -->
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
+          class="container p-2 border rounded bg-light shadow" id="register-consumption" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;">Register consumption</h2>
+          <form action="">
+            <div class="row mb-3">
+              <div class="col">
+                <label for="consumerName" class="form-label">Name</label>
+                <input type="text" id="consumerName" class="form-control" placeholder="consumer name">
+              </div>
+              <div class="col">
+                <label for="giving-name" class="form-label">Giving Name</label>
+                <input type="text" id="consumer-giving-name" class="form-control" placeholder=" Consumer giving Name">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="dept" class="form-label">Departement</label>
+                <input type="text" id="dpt" class="form-control" placeholder="Departement">
+              </div>
+              <div class="col">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" id="consumer-status" class="form-control" placeholder=" Consumer Status">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="consumption-type" class="form-label">Consumption type</label>
+                <select id="consumption-type" class="form-select">
+                  <option value="">Select</option>
+                  <option value="Permanent">Food</option>
+                  <option value="Temporal">Drink</option>
+                  <option value="Intern">Food and Drink</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="extra" class="form-label">Extra</label>
+                <input type="number" id="extra" class="form-control" placeholder="Number of extra">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="date" class="form-label">Registration date</label>
+                <input type="date" id="rgdate" class="form-control" placeholder="Date Of Birth">
+              </div>
+              <div class="col">
+                <label for="amount" class="form-label">Amount consumed :XAF</label>
+                <input type="number" id="amount-consummed" class="form-control" placeholder="Amount consumed :XAF">
+              </div>
+            </div>
+            <!-- Ajoute d'autres champs ou boutons ici -->
+            <div class="btn-gradient">
+              <button type="submit" class="btn w-50"
+                style="background-color: #E4572E; margin-top: 40px; margin-left: 200px;">Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Workers list -->
+        <!-- Exemple à placer dans la section "worker-list-section" -->
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 115%;"
+          class="container p-2 border rounded bg-light shadow" id="worker-list" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;">List Workers</h2>
+          <table class="table table-bordered worker-table">
+            <thead>
+              <tr>
+                <th style="background-color: #E4572E;">S/N</th>
+                <th style="background-color: #E4572E;">Name</th>
+                <th style="background-color: #E4572E;">Surname</th>
+                <th style="background-color: #E4572E;">Departement</th>
+                <th style="background-color: #E4572E;">Status</th>
+                <th style="background-color: #E4572E;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="worker-row">
+                <td>1</td>
+                <td>Andreas</td>
+                <td>Smith</td>
+                <td>IT</td>
+                <td>Active</td>
+                <td>
+                  <select class="form-select">
+                    <option>Choose...</option>
+                    <option>Add Consumption</option>
+                    <option>Edit</option>
+                    <option>Delete</option>
+                  </select>
+                </td>
+              </tr>
+              <!-- Add other lines -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Display workers dept -->
+
+        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 115%;"
+          class="container p-2 border rounded bg-light shadow" id="display-worker-debts" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;">Display workers depts</h2>
+          <table class="table table-bordered worker-table">
+            <thead>
+              <tr id="head">
+                <th style="background-color: #E4572E;">S/N</th>
+                <th style="background-color: #E4572E;">Name</th>
+                <th style="background-color: #E4572E;">Departement</th>
+                <th style="background-color: #E4572E;">Consumption</th>
+                <th style="background-color: #E4572E;">Extra</th>
+                <th style="background-color: #E4572E;">Total amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="worker-row">
+                <td>1</td>
+                <td>Andreas</td>
+                <td>Smith</td>
+                <td>Food</td>
+                <td>1</td>
+                <td>1000 XAF</td>
+              </tr>
+              <!-- Add other lines -->
+            </tbody>
+          </table>
+        </div>
+    <!--Consumption list-->
+     <!-- Exemple à placer dans la section "consumption-list-section" -->
+                 <div style="display: block;position: relative;left: 30px;bottom: -32px; width: 115%;"
+                class="container p-2 border rounded bg-light shadow" id="consumption-list"style="display:none">
+            <h2 style="text-align: center;color: #e4572e;">CONSUMPTION LIST</h2>
+            <table class="table table-bordered worker-table">
+                <thead>
+                    <tr  id="head">
+                         <th style="background-color: #e4572e;">S/N</th>
+                        <th style="background-color: #e4572e;">NAME</th>
+                        <th style="background-color: #e4572e;">DEPARTMENT</th>
+                        <th style="background-color: #e4572e;">ITERMS CONSUMED</th>
+                        <th style="background-color: #e4572e;">DATE/TIME</th>
+                        <th style="background-color: #e4572e;">TOTAL AMOUNT</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr class="consumption-row">
+                        
+                        <td>1</td>
+                         <td>Yaou</td>
+                          <td>IT</td>
+                          <td>rice and stew</td>
+                          <td>500frs</td>
+                          <td>25/07/25</td>
+                    </tr>
+                </tbody>
+</table>
+</div>
+</div>
+
+    </main>
+  </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer"> <span> &copy; 2025 SIPS & BITES</span></footer>
 </body>
+
 </html>
+
+<script src="../js/index.js"></script>
