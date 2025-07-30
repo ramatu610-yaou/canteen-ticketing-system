@@ -4,17 +4,22 @@ function showSection(sectionId) {
     sections.forEach(section => {
         section.style.display = 'none';
     });
-    
-    // Afficher la section spécifiée si elle existe
+
+    // Afficher la section spécifiée si elle existe, sinon afficher home-section
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
         targetSection.style.display = 'block';
-        
-        // Optionnel: Faire défiler jusqu'à la section
         targetSection.scrollIntoView({ behavior: 'smooth' });
     } else {
-        console.warn(`Section with ID "${sectionId}" not found`);
+        const home = document.getElementById('home-section');
+        if (home) home.style.display = 'block';
     }
-    
+
     return false; // Empêche le comportement par défaut des liens
 }
+
+// Afficher Home par défaut au chargement
+document.addEventListener('DOMContentLoaded', function () {
+    showSection('home-section');
+    listWorkersByDepartement();
+});
