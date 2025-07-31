@@ -146,3 +146,6 @@ span{
   font-weight: bold;
 }
 
+input{
+  text-transform: capitalize;
+}
