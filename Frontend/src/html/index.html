@@ -160,16 +160,16 @@
             <div class="row mb-3"> 
               <div class="col">
                 <label for="consumption-type" class="form-label">Consumption type</label>
-                <select id="consumption-type" class="form-select">
+                <select id="consumption-type" class="form-select" onchange="totalPrice();">
                   <option value="">Select...</option>
-                  <option value="">Food</option>
-                  <option value="">Drink</option>
-                  <option value="">Food And Drink</option>
+                  <option value="Food">Food</option>
+                  <option value="Drink">Drink</option>
+                  <option value="Food And Drink">Food And Drink</option>
                 </select>
               </div>
               <div class="col">
                 <label for="extra" class="form-label">Number Of Extra Consumption</label>
-                <input type="number" id="extra" class="form-control" placeholder="Number of extra">
+                <input onchange="totalPrice();" type="number" id="extra" class="form-control" placeholder="Number of extra">
               </div>
             </div>
             <div class="row mb-3">
@@ -179,7 +179,7 @@
               </div>
               <div class="col">
                 <label for="amount" class="form-label">Amount consumed :XAF</label>
-                <input type="number" id="amount-consummed" class="form-control" placeholder="Amount consumed :XAF" readonly>
+                <input type="text" id="amount-consummed" class="form-control" placeholder="Amount consumed :XAF" readonly>
               </div>
             </div>
             <!-- Ajoute d'autres champs ou boutons ici -->

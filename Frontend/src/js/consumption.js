@@ -62,3 +62,30 @@ function consumptionList() {
         };
     };
 }
+
+function totalPrice() {
+
+    const consumptionType = document.getElementById('consumption-type').value;
+    const extra = parseInt(document.getElementById('extra').value)  || 0;
+
+
+const basePrice = {
+     'Food': 1000,
+    'Drink': 500,
+    'Food and Drink': 1500
+};
+
+
+
+let totalPrice = basePrice[consumptionType] ||0;
+
+if (extra > 0) {
+    totalPrice += (extra * 1000); // 
+}
+
+const _totalPrice = document.getElementById("amount-consummed");
+
+_totalPrice.setAttribute("value", totalPrice+ "XAF");
+// Retourne le prix total (ou l'afficher/mettre a jour le DOM)
+return totalPrice ; // Retourne le prix total formate
+}
