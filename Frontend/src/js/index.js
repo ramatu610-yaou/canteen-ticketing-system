@@ -18,3 +18,19 @@ function showSection(sectionId) {
     
     return false; // Empêche le comportement par défaut des liens
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
