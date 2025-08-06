@@ -7,9 +7,16 @@
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/display-workers.css">
   <title>SIPS & BITES | Landing Page</title>
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+  </style>
   <!--<link rel="stylesheet" href="../vendor/all.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="../vendor/bootstrap.min.css" rel="stylesheet">
+  <script src="../vendor/cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 </head>
 
 <body>
@@ -18,7 +25,7 @@
     <div class="d-flex align-items-center">
       <img src="../../asset/logo/IMG-logo.jpg" height="50px" width="50px" class="rounded-circle" alt="Logo"
         class="me-2">
-      <h1 class="mb-0" style="margin-left: 300px;">SIPS & BITES</h1>
+      <h1 class="mb-0" style="margin-left: 600px;">SIPS & BITES</h1>
     </div>
     <div>
       <img src="../../asset/logo/profile.png" height="50px" width="50px" class="rounded-circle" Icon class="ms-3">
@@ -59,21 +66,21 @@
               <div class="card-body">
                 <i class="fa fa-users fa-2x" style="color:#e4572e;"></i>
                 <div class="card-title">Number of workers</div>
-                <div class="card-value">25</div>
+                <div class="card-value" id="workerCount">0</div>
               </div>
             </div>
             <div class="home-card">
               <div class="card-body">
                 <i class="fa fa-money-bill-wave fa-2x" style="color:#e4572e;"></i>
                 <div class="card-title">Number of Dept</div>
-                <div class="card-value">5</div>
+                <div class="card-value" id="debtCount">0</div>
               </div>
             </div>
             <div class="home-card">
               <div class="card-body">
                 <i class="fa fa-coins fa-2x" style="color:#e4572e;"></i>
                 <div class="card-title">Total Amount</div>
-                <div class="card-value">100,000 XAF</div>
+                <div class="card-value" id="totalAmount">0 XAF</div>
               </div>
             </div>
           </div>
@@ -87,18 +94,18 @@
           <form>
             <div class="row mb-3">
               <div class="col">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" id="name" class="form-control" placeholder="Name">
+                <label for="Firstname" class="form-label">First Name</label>
+                <input type="text" id="firstname" class="form-control" placeholder="First Name">
               </div>
               <div class="col">
-                <label for="giving-name" class="form-label">Giving Name</label>
-                <input type="text" id="givingName" class="form-control" placeholder="Giving Name">
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Last Name">
               </div>
             </div>
             <div class="row mb-3">
               <div class="col">
-                <label for="departement" class="form-label">Departement</label>
-                <select id="departement" class="form-select">
+                <label for="department" class="form-label">Department</label>
+                <select id="department" class="form-select">
                 </select>
               </div>
               <div class="col">
@@ -140,19 +147,21 @@
           </form>
         </div>
 
+
+
         <!-- Register consumption -->
-        <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 90%;"
-          class="container p-2 border rounded bg-light shadow" id="register-consumption" style="display: none;">
+        <div style="display: none;position: relative;left: 19px;bottom: -32px ;width: 90%;"
+          class="container p-2 border rounded bg-light shadow" id="register-consumption" style="display: block;">
           <h2 style="text-align: center; color: #E4572E;">Register consumption</h2>
           <form action="">
             <div class="row mb-3">
               <div class="col">
-                <label for="departement-consumption" class="form-label"> Choose Department</label>
-                 <select  id="departement-consumption" class="form-select">
+                <label for="department-consumption" class="form-label"> Choose Department</label>
+                 <select onchange="listWorkersByDepartment();" id="department-consumption" class="form-select">
                  </select>
               </div>
               <div class="col">
-                <label for="giving-name" class="form-label">Choose Worker</label>
+                <label for="last-name" class="form-label">Choose Worker</label>
                 <select id="worker" class="form-select">
                 </select>
               </div>
@@ -190,6 +199,10 @@
           </form>
         </div>
 
+        
+         
+  
+
         <!-- Workers list -->
         <!-- Exemple à placer dans la section "worker-list-section" -->
         <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 115%;"
@@ -198,10 +211,10 @@
           <table class="table table-bordered worker-table">
             <thead>
               <tr>
-                <th style="background-color: #E4572E;">Num</th>
-                <th style="background-color: #E4572E;">Name</th>
-                <th style="background-color: #E4572E;">Surname</th>
-                <th style="background-color: #E4572E;">Departement</th>
+                <th style="background-color: #E4572E;">S/N</th>
+                <th style="background-color: #E4572E;">First Name</th>
+                <th style="background-color: #E4572E;">Last Name</th>
+                <th style="background-color: #E4572E;">Department</th>
                 <th style="background-color: #E4572E;">Status</th>
                 <th style="background-color: #E4572E;">Date of Birth</th>
                 <th style="background-color: #E4572E;">Place of Birth</th>
@@ -223,9 +236,9 @@
           <table class="table table-bordered worker-table">
             <thead>
               <tr id="head">
-                <th style="background-color: #E4572E;">Num</th>
-                <th style="background-color: #E4572E;">Name</th>
-                <th style="background-color: #E4572E;">Departement</th>
+                <th style="background-color: #E4572E;">S/N</th>
+                <th style="background-color: #E4572E;">First Name</th>
+                <th style="background-color: #E4572E;">Department</th>
                 <th style="background-color: #E4572E;">Consumption</th>
                 <th style="background-color: #E4572E;">Extra</th>
                 <th style="background-color: #E4572E;">Total amount</th>
@@ -255,6 +268,7 @@
 <script src="../js/db.js"></script>
 <script src="../js/depatement.js"></script>
 <script src="../js/consumption.js"></script>
+<script src="../js/homepage.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

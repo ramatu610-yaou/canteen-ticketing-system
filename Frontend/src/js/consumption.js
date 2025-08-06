@@ -1,63 +1,72 @@
-function saveConsumption(){
-        var consumerName = document.getElementById("worker").value;
-        var departement = document.getElementById("departement-consumption").value;
-        var consumptionType = document.getElementById("consumption-type").value;
-        var extra =  document.getElementById("extra").value;
-        var amount =  document.getElementById("amount-consummed").value;
-        var date =  document.getElementById("rgdate").value;
+function saveConsumption() {
+    var consumerName = document.getElementById("worker").value;
+    var departement = document.getElementById("department-consumption").value;
+    var consumptionType = document.getElementById("consumption-type").value;
+    var extra = document.getElementById("extra").value;
+    var amount = document.getElementById("amount-consummed").value;
+    var date = document.getElementById("rgdate").value;
 
-        var consumptionData = {consumerName, departement, consumptionType, extra, amount, date};
+    var consumptionData = { consumerName, departement, consumptionType, extra, amount, date };
 
-        console.log(consumptionData);
+    console.log(consumptionData);
 
 
-        const request = indexedDB.open("cantisysDb", 1);
-    request.onsuccess = function(event) {
+    const request = indexedDB.open("cantisysDb", 1);
+    request.onsuccess = function (event) {
         const db = event.target.result;
         const transaction = db.transaction(["consumption"], "readwrite");
         const objectStore = transaction.objectStore("consumption");
         const addRequest = objectStore.add(consumptionData);
 
-        addRequest.onsuccess = function() {
-            console.log("consumption added successfully");
-        
+
+ 
+        addRequest.onsuccess = function () {
+
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Consumption registered successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         };
 
-        addRequest.onerror = function() {
+
+        addRequest.onerror = function () {
             console.error("Error adding consumption: ", addRequest.error);
         };
     };
 
-    
+
 }
 
 function consumptionList() {
-     const table = document.getElementById("consumption-list");
+    const table = document.getElementById("consumption-list");
     table.innerHTML = ""; // Vide le tableau avant d'ajouter les lignes
 
     const request = indexedDB.open("cantisysDb", 1);
-    request.onsuccess = function(event) {
+    request.onsuccess = function (event) {
         const db = event.target.result;
         const transaction = db.transaction(["consumption"], "readonly");
         const objectStore = transaction.objectStore("consumption");
         const getAllRequest = objectStore.getAll();
 
-        getAllRequest.onsuccess = function() {
+        getAllRequest.onsuccess = function () {
             const consumptionTable = getAllRequest.result;
             consumptionTable.forEach((consumption, index) => {
                 const row = table.insertRow();
                 row.insertCell(0).innerText = index + 1;
-                row.insertCell(1).innerText = consumption.consumerName;
-                row.insertCell(2).innerText = consumption.departement;
+                row.insertCell(1).innerText = consumption.FirstName;
+                row.insertCell(2).innerText = consumption.department;
                 row.insertCell(3).innerText = consumption.consumptionType;
                 row.insertCell(4).innerText = consumption.extra;
                 row.insertCell(5).innerText = consumption.amount;
-               
+
             });
             console.log("consumption retrieved successfully");
         };
 
-        getAllRequest.onerror = function() {
+        getAllRequest.onerror = function () {
             console.error("Error retrieving workers: ", getAllRequest.error);
         };
     };
@@ -66,26 +75,26 @@ function consumptionList() {
 function totalPrice() {
 
     const consumptionType = document.getElementById('consumption-type').value;
-    const extra = parseInt(document.getElementById('extra').value)  || 0;
+    const extra = parseInt(document.getElementById('extra').value) || 0;
 
 
-const basePrice = {
-     'Food': 1000,
-    'Drink': 500,
-    'Food and Drink': 1500
-};
+    const basePrice = {
+        'Food': 1000,
+        'Drink': 500,
+        'Food and Drink': 1500
+    };
 
 
 
-let totalPrice = basePrice[consumptionType] ||0;
+    let totalPrice = basePrice[consumptionType] || 0;
 
-if (extra > 0) {
-    totalPrice += (extra * 1000); // 
-}
+    if (extra > 0) {
+        totalPrice += (extra * 1000); // 
+    }
 
-const _totalPrice = document.getElementById("amount-consummed");
+    const _totalPrice = document.getElementById("amount-consummed");
 
-_totalPrice.setAttribute("value", totalPrice+ "XAF");
-// Retourne le prix total (ou l'afficher/mettre a jour le DOM)
-return totalPrice ; // Retourne le prix total formate
+    _totalPrice.setAttribute("value", totalPrice + "XAF");
+    // Retourne le prix total (ou l'afficher/mettre a jour le DOM)
+    return totalPrice; // Retourne le prix total formate
 }

@@ -8,8 +8,8 @@ request.onupgradeneeded = function(event) {
     // Crée la table "consumption" si elle n'existe pas
     if (!db.objectStoreNames.contains("consumption")) {
         var objectStore = db.createObjectStore("consumption", { keyPath: "id", autoIncrement: true });
-        objectStore.createIndex("consumerName", "consumerName", { unique: false });
-        objectStore.createIndex("departement", "departement", { unique: false });
+        objectStore.createIndex("firstName", "firstName", { unique: false });
+        objectStore.createIndex("department", "department", { unique: false });
         objectStore.createIndex("consumptionType", "consumptionType", { unique: false });
         objectStore.createIndex("exta", "exta", { unique: false });
         objectStore.createIndex("amount", "amount", { unique: false });
@@ -20,9 +20,9 @@ request.onupgradeneeded = function(event) {
     // Crée la table "workers" si elle n'existe pas
     if (!db.objectStoreNames.contains("workers")) {
         var objectStore = db.createObjectStore("workers", { keyPath: "id", autoIncrement: true });
-        objectStore.createIndex("name", "name", { unique: false });
-        objectStore.createIndex("givingName", "givingName", { unique: false });
-        objectStore.createIndex("departement", "departement", { unique: false });
+        objectStore.createIndex("firstName", "firstName", { unique: false });
+        objectStore.createIndex("lastName", "lastName", { unique: false });
+        objectStore.createIndex("department", "department", { unique: false });
         objectStore.createIndex("status", "status", { unique: false });
         objectStore.createIndex("dob", "dob", { unique: false });
         objectStore.createIndex("pob", "pob", { unique: false });
@@ -30,11 +30,11 @@ request.onupgradeneeded = function(event) {
         console.log("Object store 'workers' created successfully");
     }
 
-    if (!db.objectStoreNames.contains("departement")) {
-        var objectStore = db.createObjectStore("departement", { keyPath: "id", autoIncrement: true });
-        objectStore.createIndex("name", "name", { unique: false });
+    if (!db.objectStoreNames.contains("department")) {
+        var objectStore = db.createObjectStore("department", { keyPath: "id", autoIncrement: true });
+        objectStore.createIndex("firstName", "firstName", { unique: false });
         objectStore.createIndex("description", "description", { unique: false });
-        console.log("Object store 'departement' created successfully");
+        console.log("Object store 'department' created successfully");
     }
 
     if (!db.objectStoreNames.contains("consumptionType")) {
@@ -51,5 +51,5 @@ request.onsuccess = function(event) {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    listDepartements();
+    listDepartments();
 });

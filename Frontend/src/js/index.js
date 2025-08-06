@@ -14,12 +14,12 @@ function showSection(sectionId) {
         const home = document.getElementById('home-section');
         if (home) home.style.display = 'block';
     }
-
+ 
     return false; // Empêche le comportement par défaut des liens
 }
 
 // Afficher Home par défaut au chargement
 document.addEventListener('DOMContentLoaded', function () {
     showSection('home-section');
-    listWorkersByDepartement();
+    listWorkersByDepartment();
 });
