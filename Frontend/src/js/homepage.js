@@ -22,7 +22,7 @@ function updateHomePage(db) {
     document.getElementById("workerCount").innerText = workers.length;
   };
 
-  //  Count debts and  sum total amount
+  //  Count debts 
   const debtTransaction = db.transaction("consumption", "readonly");
   const debtStore = debtTransaction.objectStore("consumption");
   const debtRequest = debtStore.getAll();
@@ -31,7 +31,8 @@ function updateHomePage(db) {
     const debts = debtRequest.result;
     document.getElementById("debtCount").innerText = debts.length;
 
-    const total = debts.reduce((sum, item) => sum + Number(item.amount || 0), 0);
+    //sum total amount
+    const total = debts.reduce((extra, consumption) => extra + consumption(consumption.amount || 0), 0);
     document.getElementById("totalAmount").innerText = total.toLocaleString() + " XAF";
   };
 }

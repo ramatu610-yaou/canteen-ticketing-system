@@ -51,6 +51,9 @@
         <a href="#" onclick="showSection('display-worker-debts'); consumptionList();" class="sidebar-link">
           <i class="fa fa-money-bill-wave"></i> Display Worker Debts
         </a>
+        <a href="#" onclick="showSection('consumption-list1');" class="sidebar-link">
+          <i class="fa fa-money-bill-wave"></i> Consumption List
+        </a>
       </nav>
     </div>
 
@@ -161,8 +164,8 @@
                  </select>
               </div>
               <div class="col">
-                <label for="last-name" class="form-label">Choose Worker</label>
-                <select id="worker" class="form-select">
+                <label for="worker-name" class="form-label">Choose Worker</label>
+                <select id="worker-name" class="form-select">
                 </select>
               </div>
             </div>            
@@ -216,8 +219,8 @@
                 <th style="background-color: #E4572E;">Last Name</th>
                 <th style="background-color: #E4572E;">Department</th>
                 <th style="background-color: #E4572E;">Status</th>
-                <th style="background-color: #E4572E;">Date of Birth</th>
-                <th style="background-color: #E4572E;">Place of Birth</th>
+                <th style="background-color: #E4572E;">DoB</th>
+                <th style="background-color: #E4572E;">PoB</th>
                 <th style="background-color: #E4572E;">Registration Date</th>
                 <th style="background-color: #E4572E;">Actions</th>
               </tr>
@@ -237,7 +240,8 @@
             <thead>
               <tr id="head">
                 <th style="background-color: #E4572E;">S/N</th>
-                <th style="background-color: #E4572E;">First Name</th>
+                <th style="background-color: #E4572E;">Date</th>
+                <th style="background-color: #E4572E;">Name</th>
                 <th style="background-color: #E4572E;">Department</th>
                 <th style="background-color: #E4572E;">Consumption</th>
                 <th style="background-color: #E4572E;">Extra</th>
@@ -245,6 +249,28 @@
               </tr>
             </thead>
             <tbody id="consumption-list">
+              
+              <!-- Ajoute d'autres lignes ici -->
+            </tbody>
+          </table>
+        </div>
+
+         <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 115%;"
+          class="container p-2 border rounded bg-light shadow" id="consumption-list1" style="display: none;">
+          <h2 style="text-align: center; color: #E4572E;"> CONSUMPTION LIST</h2>
+          <table class="table table-bordered worker-table1">
+            <thead>
+              <tr id="head1">
+                <th style="background-color: #E4572E;">S/N</th>
+                <th style="background-color: #E4572E;">Date</th>
+                <th style="background-color: #E4572E;">Name</th>
+                <th style="background-color: #E4572E;">Department</th>
+                <th style="background-color: #E4572E;">Consumption</th>
+                <th style="background-color: #E4572E;">Extra</th>
+                <th style="background-color: #E4572E;">Total amount</th>
+              </tr>
+            </thead>
+            <tbody id="consumption-list1">
               
               <!-- Ajoute d'autres lignes ici -->
             </tbody>

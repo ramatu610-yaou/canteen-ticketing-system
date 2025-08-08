@@ -78,13 +78,13 @@ function listWorkersByDepartment() {
             const filteredWorkers = allWorkers.filter(worker => worker.department === selectedDepartment);
 
             // Exemple : remplir le select des workers
-            const workerSelect = document.getElementById("worker");
+            const workerSelect = document.getElementById("worker-name");
             if (workerSelect) {
                 workerSelect.innerHTML = '<option value="">Choose Worker...</option>';
                 filteredWorkers.forEach(worker => {
                     const option = document.createElement("option");
-                    option.value = worker.id || worker.firstname; // utilise l'id si dispo, sinon le nom
-                    option.textContent = worker.lastName + " " + worker.firstName;
+                    option.value =  worker.lastName + " " + worker.firstName; 
+                    option.textContent = worker.lastName +" " + worker.firstName;
                     workerSelect.appendChild(option);
                 
                 });

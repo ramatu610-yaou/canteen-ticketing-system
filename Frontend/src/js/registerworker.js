@@ -75,7 +75,9 @@ function listWorkers() {
                 row.insertCell(7).innerText = worker.rgdate;
                 const actionsCell = row.insertCell();
                 actionsCell.innerHTML = `
-                    <select class="form-select action-select">
+                    <select class="form-select action-select"
+                    data-firstname="${worker.fname}"
+                    data-lasttname="${worker.lname}">
                         <option>Choose...</option>
                         <option value="add consumption">Add Consumption</option>
                         <option value="edit">Edit</option>
@@ -92,12 +94,34 @@ function listWorkers() {
                     switch (selectedValue) {
                         case 'add consumption':
                         showSection('register-consumption')
+                        document.getElementById("department-consumption").value= worker.department;
+                         document.getElementById("worker-name").value= `${firstName} ${lastName}`
                         break;
-
-                    }
-                });
+                        case 'edit':
+                             Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Edit not yet implemented",
+                showConfirmButton: true,
+                timer: 1500
             });
+                        break;
+                        case 'delete':
+                             Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "delete not yet implemented",
+                showConfirmButton: true,
+                timer: 1500
+                
+           
+            });
+            
+        }
+    });
+});
         }
     }
-};
+}
+                
         

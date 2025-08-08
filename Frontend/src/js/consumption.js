@@ -1,12 +1,12 @@
 function saveConsumption() {
-    var consumerName = document.getElementById("worker").value;
-    var departement = document.getElementById("department-consumption").value;
+    var firstName = document.getElementById("worker-name").value;
+    var department = document.getElementById("department-consumption").value;
     var consumptionType = document.getElementById("consumption-type").value;
     var extra = document.getElementById("extra").value;
     var amount = document.getElementById("amount-consummed").value;
     var date = document.getElementById("rgdate").value;
 
-    var consumptionData = { consumerName, departement, consumptionType, extra, amount, date };
+    var consumptionData = { firstName, department, consumptionType, extra, amount, date };
 
     console.log(consumptionData);
 
@@ -18,8 +18,6 @@ function saveConsumption() {
         const objectStore = transaction.objectStore("consumption");
         const addRequest = objectStore.add(consumptionData);
 
-
- 
         addRequest.onsuccess = function () {
 
             Swal.fire({
@@ -56,11 +54,12 @@ function consumptionList() {
             consumptionTable.forEach((consumption, index) => {
                 const row = table.insertRow();
                 row.insertCell(0).innerText = index + 1;
-                row.insertCell(1).innerText = consumption.FirstName;
-                row.insertCell(2).innerText = consumption.department;
-                row.insertCell(3).innerText = consumption.consumptionType;
-                row.insertCell(4).innerText = consumption.extra;
-                row.insertCell(5).innerText = consumption.amount;
+                row.insertCell(1).innerText = consumption.date;
+                row.insertCell(2).innerText = consumption.firstName;
+                row.insertCell(3).innerText = consumption.department;
+                row.insertCell(4).innerText = consumption.consumptionType;
+                row.insertCell(5).innerText = consumption.extra;
+                row.insertCell(6).innerText = consumption.amount;
 
             });
             console.log("consumption retrieved successfully");
@@ -81,7 +80,7 @@ function totalPrice() {
     const basePrice = {
         'Food': 1000,
         'Drink': 500,
-        'Food and Drink': 1500
+        'Food And Drink': 1500
     };
 
 
