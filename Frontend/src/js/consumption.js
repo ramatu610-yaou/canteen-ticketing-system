@@ -68,8 +68,21 @@ function consumptionList() {
                 row.insertCell(5).innerText = consumption.extra;
                 row.insertCell(6).innerText = consumption.amount;
 
-            });
-            console.log("consumption retrieved successfully");
+            }); 
+             console.log("consumption retrieved successfully");
+             
+            const row1 = table.insertRow();
+            let totalCell = row1.innerText(0);
+            totalCell.innerText = "Total" ;
+            totalCell.colspan = 5;
+            let amountCell = row1.insertCell(1);
+
+            amountCell.colspan =3 ;
+        
+           
+            
+            
+            
         };
 
         getAllRequest.onerror = function () {

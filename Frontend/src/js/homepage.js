@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function updateHomePage(db) {
-  //  Count workers
+  //  Count Workers
   const workerTransaction = db.transaction("workers", "readonly");
   const workerStore = workerTransaction.objectStore("workers");
   const workerRequest = workerStore.getAll();
