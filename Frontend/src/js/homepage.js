@@ -32,7 +32,21 @@ function updateHomePage(db) {
     document.getElementById("debtCount").innerText = debts.length;
 
     //sum total amount
-    const total = debts.reduce((extra, consumption) => extra + consumption(consumption.amount || 0), 0);
-    document.getElementById("totalAmount").innerText = total.toLocaleString() + " XAF";
-  };
+
+    const transaction = db.transaction("consumption", "readonly");
+    const store = transaction.objectStore("consumption");
+    const getAllRequest = store.getAll();
+    getAllRequest.onsuccess = function () {
+        let totalAmount = 0;
+
+        getAllRequest.result.forEach(consumption => {
+            const amountValue = parseInt(consumption.amount.replace("XAF", ""))
+            if(!isNaN(amountValue)) {
+            totalAmount += amountValue;
+            }
+        });
+
+        document.getElementById("totalAmount").innerText = totalAmount.toFixed(2);
+    };
 }
+  };

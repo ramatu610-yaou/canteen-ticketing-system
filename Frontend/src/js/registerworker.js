@@ -38,6 +38,8 @@ function submitWorkersData() {
                 title: "Worker registered successfully",
                 showConfirmButton: false,
                 timer: 1500
+            }).then(()  => {
+                window.location.reload();
             });
         };
 
@@ -75,9 +77,7 @@ function listWorkers() {
                 row.insertCell(7).innerText = worker.rgdate;
                 const actionsCell = row.insertCell();
                 actionsCell.innerHTML = `
-                    <select class="form-select action-select"
-                    data-firstname="${worker.fname}"
-                    data-lasttname="${worker.lname}">
+                    <select class="form-select action-select">
                         <option>Choose...</option>
                         <option value="add consumption">Add Consumption</option>
                         <option value="edit">Edit</option>
@@ -95,8 +95,11 @@ function listWorkers() {
                         case 'add consumption':
                         showSection('register-consumption')
                         document.getElementById("department-consumption").value= worker.department;
-                         document.getElementById("worker-name").value= `${firstName} ${lastName}`
-                        break;
+                        document.getElementById("div-to-display").style.display = 'none';
+                        document.getElementById("div-to-display1").style.display = 'block';
+                        document.getElementById("worker-name-select").value= worker.lastName +""+ worker.firstName;
+                        
+                      break;
                         case 'edit':
                              Swal.fire({
                 position: "center",

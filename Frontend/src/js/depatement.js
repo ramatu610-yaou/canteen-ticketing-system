@@ -19,8 +19,8 @@ for (let i = 0; i < department.length; i++) {
             console.error(`Error adding department ${department[i]}: `, addRequest.error);
         }; 
     };
-}
- */
+}*/
+ 
 
 function listDepartments() {
     const request = indexedDB.open("cantisysDb", 1);

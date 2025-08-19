@@ -1,12 +1,17 @@
 function saveConsumption() {
-    var firstName = document.getElementById("worker-name").value;
+    var firstName = document.getElementById("worker-name-select").value;
     var department = document.getElementById("department-consumption").value;
     var consumptionType = document.getElementById("consumption-type").value;
     var extra = document.getElementById("extra").value;
     var amount = document.getElementById("amount-consummed").value;
     var date = document.getElementById("rgdate").value;
+    
+
+
 
     var consumptionData = { firstName, department, consumptionType, extra, amount, date };
+
+    
 
     console.log(consumptionData);
 
@@ -26,6 +31,8 @@ function saveConsumption() {
                 title: "Consumption registered successfully",
                 showConfirmButton: false,
                 timer: 1500
+            }).then(()  => {
+                window.location.reload();
             });
         };
 

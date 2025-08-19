@@ -28,7 +28,7 @@
       <h1 class="mb-0" style="margin-left: 600px;">SIPS & BITES</h1>
     </div>
     <div>
-      <img src="../../asset/logo/profile.png" height="50px" width="50px" class="rounded-circle" Icon class="ms-3">
+      <img src="../../asset/image/IMG_E6004.JPG" height="50px" width="50px" class="rounded-circle" Icon class="ms-3">
     </div>
   </header>
 
@@ -51,9 +51,6 @@
         <a href="#" onclick="showSection('display-worker-debts'); consumptionList();" class="sidebar-link">
           <i class="fa fa-money-bill-wave"></i> Display Worker Debts
         </a>
-        <a href="#" onclick="showSection('consumption-list1');" class="sidebar-link">
-          <i class="fa fa-money-bill-wave"></i> Consumption List
-        </a>
       </nav>
     </div>
 
@@ -69,21 +66,21 @@
               <div class="card-body">
                 <i class="fa fa-users fa-2x" style="color:#e4572e;"></i>
                 <div class="card-title">Number of workers</div>
-                <div class="card-value" id="workerCount">0</div>
+                <div class="card-value" id="workerCount"></div>
               </div>
             </div>
             <div class="home-card">
               <div class="card-body">
                 <i class="fa fa-money-bill-wave fa-2x" style="color:#e4572e;"></i>
                 <div class="card-title">Number of Dept</div>
-                <div class="card-value" id="debtCount">0</div>
+                <div class="card-value" id="debtCount"></div>
               </div>
             </div>
             <div class="home-card">
               <div class="card-body">
                 <i class="fa fa-coins fa-2x" style="color:#e4572e;"></i>
                 <div class="card-title">Total Amount</div>
-                <div class="card-value" id="totalAmount">0 XAF</div>
+                <div class="card-value" id="totalAmount"></div>
               </div>
             </div>
           </div>
@@ -163,10 +160,14 @@
                  <select onchange="listWorkersByDepartment();" id="department-consumption" class="form-select">
                  </select>
               </div>
-              <div class="col">
+              <div id="div-to-display" style="display:block" class="col">
                 <label for="worker-name" class="form-label">Choose Worker</label>
                 <select id="worker-name" class="form-select">
                 </select>
+              </div>
+               <div id="div-to-display1" style="display:none" class="col">
+                <label for="worker-name" class="form-label">Choose Worker</label>
+                <input type="text" id="worker-name-select" class="form-select">
               </div>
             </div>            
             <div class="row mb-3"> 
@@ -255,22 +256,7 @@
           </table>
         </div>
 
-         <div style="display: block;position: relative;left: 19px;bottom: -32px ;width: 115%;"
-          class="container p-2 border rounded bg-light shadow" id="consumption-list1" style="display: none;">
-          <h2 style="text-align: center; color: #E4572E;"> CONSUMPTION LIST</h2>
-          <table class="table table-bordered worker-table1">
-            <thead>
-              <tr id="head1">
-                <th style="background-color: #E4572E;">S/N</th>
-                <th style="background-color: #E4572E;">Date</th>
-                <th style="background-color: #E4572E;">Name</th>
-                <th style="background-color: #E4572E;">Department</th>
-                <th style="background-color: #E4572E;">Consumption</th>
-                <th style="background-color: #E4572E;">Extra</th>
-                <th style="background-color: #E4572E;">Total amount</th>
-              </tr>
-            </thead>
-            <tbody id="consumption-list1">
+         
               
               <!-- Ajoute d'autres lignes ici -->
             </tbody>
